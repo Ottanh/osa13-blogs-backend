@@ -6,6 +6,7 @@ import blogsRouter from './controllers/blogs.js'
 import userRouter from './controllers/user.js'
 import loginRouter from './controllers/login.js'
 import authorRouter from './controllers/author.js'
+import rlistRouter from './controllers/readinglist.js'
 import errorHandler from './util/errorHandler.js'
 import './models/index.js'
 
@@ -17,6 +18,7 @@ app.use('/api/blogs', blogsRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/author', authorRouter)
+app.use('/api/readinglist', rlistRouter)
 
 app.use(errorHandler)
 

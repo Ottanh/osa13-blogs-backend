@@ -2,7 +2,13 @@ import { Model, DataTypes } from 'sequelize'
 import { sequelize } from '../util/db.js'
 import Blog from './blog.js'
 
-class User extends Model {}
+class User extends Model {
+  static async getTokens(id) { 
+    return await User.unscoped().findByPk(id, {
+      attributes: ['tokens']
+    })
+  }
+}
 
 User.init({
   id: {
@@ -22,10 +28,20 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false
   },
+  disabled: {
+    type: DataTypes.BOOLEAN,
+    default: false
+  },
+  tokens: {
+    type: DataTypes.ARRAY(DataTypes.STRING)
+  }
 }, {
   sequelize,
   underscored: true,
-  modelName: 'user'
+  modelName: 'user',
+  defaultScope: {
+    attributes: { exclude: ['tokens'] }
+  }
 })
 
 

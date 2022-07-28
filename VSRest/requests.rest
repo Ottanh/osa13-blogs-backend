@@ -4,12 +4,13 @@ GET http://localhost:3001/api/blogs
 
 POST http://localhost:3001/api/blogs 
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Iktpc3NhIiwiaWQiOjIsImlhdCI6MTY1ODcwOTQ3NH0.MoukfqA7A4oKWrN3aO83f0AqlvqqEDsyNn-dgY1DzwA
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtvaXJhQGdtYWlsLmNvbSIsImlkIjoyLCJpYXQiOjE2NTg5OTgzODh9.pzt4lbtxrYtx8I-AADNd5f4oAglzJzEocPBh924EE58
 
 {
   "author": "kissa", 
   "url": "a", 
-  "title": "koira"
+  "title": "koira",
+  "year": 2022
 }
 
 #####
@@ -33,12 +34,13 @@ Content-Type: application/json
 
 {
   "username": "koira@gmail.com", 
-  "name": "Koira2"
+  "name": "Koira1",
+  "disabled": false
 }
 
 ####
 
-GET http://localhost:3001/api/users
+GET http://localhost:3001/api/users/
 
 #####
 
@@ -56,6 +58,31 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "Kissa",
+  "username": "koira@gmail.com",
   "password": "salainen"
 }
+
+####
+
+POST http://localhost:3001/api/readinglist
+Content-Type: application/json
+
+{
+  "blogId": 3, 
+  "userId": 2
+}
+
+####
+
+PUT http://localhost:3001/api/readinglist/1
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtvaXJhQGdtYWlsLmNvbSIsImlkIjoyLCJpYXQiOjE2NTg5ODgwNjh9.zyOZ98EKrLokGNiwLNj_zF_oQoNjqxn_Mb_KRfIT72A
+
+{
+  "luettu": true
+}
+
+####
+DELETE http://localhost:3001/api/login
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtvaXJhQGdtYWlsLmNvbSIsImlkIjoyLCJpYXQiOjE2NTg5OTU5NTh9.-7EiuvwRt9gK6_nXmL1TPFVC-pJe9F7l7Sr5v32C934
